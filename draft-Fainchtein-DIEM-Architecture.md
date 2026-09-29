@@ -19,8 +19,7 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
+title: "DIEM Architecture"
 category: info
 
 docname: draft-todo-yourname-protocol-latest
@@ -29,12 +28,13 @@ number:
 date:
 consensus: true
 v: 3
-area: AREA
-workgroup: WG Working Group
+area: ART
+workgroup: DIEM Digital Emblems
 keyword:
- - next generation
- - unicorn
- - AI-native
+ - Architecture
+ - DNS
+ - DNSSec
+ - DANE
 venue:
   group: WG
   type: Working Group
@@ -45,10 +45,14 @@ venue:
 
 author:
  -
-    fullname: Your Name Here
-    organization: Your Organization Here
-    email: your.email@example.com
+    fullname: Rahel A. Fainchtein
+    organization: JHUAPL
+    email: rahel.fainchtein@jhuapl.edu
 
+    fullname: Allison Mankin
+    organization: Packet Clearing House
+    email: 
+    
 normative:
 
 informative:
