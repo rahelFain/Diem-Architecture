@@ -8,20 +8,20 @@ number:
 date:
 consensus: true
 v: 3
-area: ART
-workgroup: DIEM Digital Emblems
+# area: ART
+# workgroup: DIEM Digital Emblems
 keyword:
  - Architecture
  - DNS
  - DNSSec
  - DANE
 venue:
-  group: WG
-  type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+#  group: WG
+#  type: Working Group
+#  mail: WG@example.com
+#  arch: https://example.com/WG
+  github: "rahelFain/Diem-Architecture"
+  latest: "https://rahelFain.github.io/Diem-Architecture/draft-Fainchtein-DIEM-Architecture.html"
 
 author:
  -
@@ -31,8 +31,8 @@ author:
 
     fullname: Allison Mankin
     organization: Packet Clearing House
-    email: 
-    
+    email:
+
 normative:
 
 informative:
