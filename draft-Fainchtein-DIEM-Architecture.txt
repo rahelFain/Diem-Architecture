@@ -2,13 +2,13 @@
 
 
 
-WG Working Group                                              Y. N. Here
-Internet-Draft                                    Your Organization Here
+DIEM Digital Emblems                                           A. Mankin
+Internet-Draft                                     Packet Clearing House
 Intended status: Informational                         29 September 2026
 Expires: 2 April 2027
 
 
-                           TODO - Your title
+                           DIEM Architecture
                   draft-todo-yourname-protocol-latest
 
 Abstract
@@ -109,6 +109,5 @@ Acknowledgments
 
 Author's Address
 
-   Your Name Here
-   Your Organization Here
-   Email: your.email@example.com
+   Allison Mankin
+   Packet Clearing House
