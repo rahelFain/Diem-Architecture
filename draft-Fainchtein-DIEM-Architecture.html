@@ -14,21 +14,21 @@
 <meta content="DNS" name="keyword">
 <meta content="DNSSec" name="keyword">
 <meta content="DANE" name="keyword">
-<meta content="draft-todo-yourname-protocol-latest" name="ietf.draft">
+<meta content="draft-Fainchtein-DIEM-Architecture-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.34.1
-    Python 3.14.7
-    ConfigArgParse 1.7.7
+    Python 3.14.8
+    ConfigArgParse 1.8.0
     google-i18n-address 3.1.1
     intervaltree 3.2.1
     Jinja2 3.1.6
     lxml 6.1.1
     natsort 8.4.0
-    platformdirs 4.11.10
+    platformdirs 4.13.4
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.33.1
-    wcwidth 0.8.4
+    wcwidth 0.9.2
 -->
 <link href="draft-Fainchtein-DIEM-Architecture.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1044,11 +1044,11 @@ svg {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">DIEM Architecture</td>
-<td class="right">September 2026</td>
+<td class="right">October 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Mankin</td>
-<td class="center">Expires 2 April 2027</td>
+<td class="center">Expires 27 April 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1056,17 +1056,17 @@ svg {
 <div id="internal-metadata" class="document-information">
 <dl id="identifiers">
 <dt class="label-workgroup">Workgroup:</dt>
-<dd class="workgroup">DIEM Digital Emblems</dd>
+<dd class="workgroup">Network Working Group</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
-<dd class="internet-draft">draft-todo-yourname-protocol-latest</dd>
+<dd class="internet-draft">draft-Fainchtein-DIEM-Architecture-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-09-29" class="published">29 September 2026</time>
+<time datetime="2026-10-24" class="published">24 October 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-04-02">2 April 2027</time></dd>
+<dd class="expires"><time datetime="2027-04-27">27 April 2027</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1087,14 +1087,10 @@ svg {
       </h2>
 <p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
 <p id="section-note.1-2">
-        The latest revision of this draft can be found at <span><a href="https://example.com/LATEST">https://example.com/LATEST</a></span>.
-        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-todo-yourname-protocol/">https://datatracker.ietf.org/doc/draft-todo-yourname-protocol/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
-<p id="section-note.1-3">
-        Discussion of this document takes place on the
-        WG Working Group mailing list (<span><a href="mailto:WG@example.com">mailto:WG@example.com</a></span>),
-        which is archived at <span><a href="https://example.com/WG">https://example.com/WG</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
-<p id="section-note.1-4">Source for this draft and an issue tracker can be found at
-        <span><a href="https://github.com/USER/REPO">https://github.com/USER/REPO</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
+        The latest revision of this draft can be found at <span><a href="https://rahelFain.github.io/Diem-Architecture/draft-Fainchtein-DIEM-Architecture.html">https://rahelFain.github.io/Diem-Architecture/draft-Fainchtein-DIEM-Architecture.html</a></span>.
+        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-Fainchtein-DIEM-Architecture/">https://datatracker.ietf.org/doc/draft-Fainchtein-DIEM-Architecture/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+<p id="section-note.1-3">Source for this draft and an issue tracker can be found at
+        <span><a href="https://github.com/rahelFain/Diem-Architecture">https://github.com/rahelFain/Diem-Architecture</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -1115,7 +1111,7 @@ svg {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 2 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 27 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1151,19 +1147,48 @@ svg {
             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-assumptions" class="internal xref">Assumptions</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-dns-structures-of-digital-e" class="internal xref">DNS Structures of Digital Emblems</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-zone-cut-structure-for-digi" class="internal xref">Zone Cut Structure for Digital Emblems</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-authentication-and-dnssec-a" class="internal xref">Authentication and DNSSEC Architecture of DE's</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-emblems-that-are-not-fully-" class="internal xref">Emblems that are not Fully Contained in DNS</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-discovery" class="internal xref">Discovery</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.1">
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="auto internal xref">8.1</a>.  <a href="#name-dns-contained-emblem-discov" class="internal xref">DNS Contained Emblem Discovery</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-external-de-discovery" class="internal xref">External DE Discovery</a></p>
+</li>
+            </ul>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-use-of-iana-registries" class="internal xref">Use of IANA Registries</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-architecture-for-authorizin" class="internal xref">Architecture for Authorizing Entities</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
+            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+            <p id="section-toc.1-1.13.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
+            <p id="section-toc.1-1.14.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-authors-address" class="internal xref">Author's Address</a></p>
 </li>
         </ul>
 </nav>
@@ -1174,7 +1199,17 @@ svg {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">TODO Introduction<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-1">This document presents a DNS and DNSSec forward architecture.
+That is, it assumes DNSSec is required and defines an architecture in which different components or building blocks can be combined to achieve the needs of a particular use case, but where all of them are primarily realized using DNS and employ DNSSEC signing and validation.
+For each building block or set of blocks introduced we reference the set of requirements it meets and identify other blocks with which it would likely be used or implemented.
+This is intended to enable the construction of Digital Emblems that accommodate various granularity and temporality requirements.
+Note: Digital Emblem protocols that do not use/require DNSSEC signing and validation thereof should specify how they handle emblem validation (to the extent required for their intended use cases).
+Among the variations discussed in this document are cases where:
+* All of the DE's key information provided within DNS {};
+* DE uses DNS pointers to resources outside of DNS that contain the emblem's key information {};
+* DE primarily consists of a single RR {};
+* DE consists of a bundle of separated RR's (RRSet) where each RR contains one or more pieces of the DE's core information {};
+(Note: This list is not intended to be all inclusive.)<a href="#section-1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1188,26 +1223,111 @@ described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</s
 appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="security">
+<div id="assume">
 <section id="section-3">
-      <h2 id="name-security-considerations">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      <h2 id="name-assumptions">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-assumptions" class="section-name selfRef">Assumptions</a>
       </h2>
-<p id="section-3-1">TODO Security<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">This document presents a DNS and DNSSEC forward architecture.
+That is, it assumes DNSSec is required and defines an architecture in which different components are primarily realized using DNS and DNSSEC.
+* Cryptographic validation of Digital Emblems is required and is performed using DNSSec.
+* Given the use of DNSSEC, all cases must meet the assured response requirement and a baseline version of consistent content.
+We discuss this in more detail and present a mechanism for supporting selective disclosure in section {}(TODO)<a href="#section-3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="structures">
+<section id="section-4">
+      <h2 id="name-dns-structures-of-digital-e">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-dns-structures-of-digital-e" class="section-name selfRef">DNS Structures of Digital Emblems</a>
+      </h2>
+<p id="section-4-1">Decisions have to be made when designing the protocol and applying it for a given use case
+Generally speaking we recommend using (x) but offer considerations for others
+* Single RR w/everything vs multi RR/RRSet with each RR containing one or more pieces of core information
+* Type(s) of RR(s) used within the Digital Emblem
+ * TXT vs no TXT<a href="#section-4-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="zoneCuts">
+<section id="section-5">
+      <h2 id="name-zone-cut-structure-for-digi">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-zone-cut-structure-for-digi" class="section-name selfRef">Zone Cut Structure for Digital Emblems</a>
+      </h2>
+<p id="section-5-1">TODO: Considerations for selective disclosure go here<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-2">TODO: Include building block content such as code examples or diagrams/illustrations (ABNF) to provide representation of concepts described.
+# Digital Emblem Naming Structure {#naming}<a href="#section-5-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="authentication">
+<section id="section-6">
+      <h2 id="name-authentication-and-dnssec-a">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-authentication-and-dnssec-a" class="section-name selfRef">Authentication and DNSSEC Architecture of DE's</a>
+      </h2>
+<p id="section-6-1">AM<a href="#section-6-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="pointers">
+<section id="section-7">
+      <h2 id="name-emblems-that-are-not-fully-">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-emblems-that-are-not-fully-" class="section-name selfRef">Emblems that are not Fully Contained in DNS</a>
+      </h2>
+<p id="section-7-1">Alex?<a href="#section-7-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="discovery">
+<section id="section-8">
+      <h2 id="name-discovery">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-discovery" class="section-name selfRef">Discovery</a>
+      </h2>
+<div id="dnsDiscovery">
+<section id="section-8.1">
+        <h3 id="name-dns-contained-emblem-discov">
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-dns-contained-emblem-discov" class="section-name selfRef">DNS Contained Emblem Discovery</a>
+      </h3>
+</section>
+</div>
+<div id="extDiscovery">
+<section id="section-8.2">
+        <h3 id="name-external-de-discovery">
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-external-de-discovery" class="section-name selfRef">External DE Discovery</a>
+      </h3>
+</section>
+</div>
+</section>
+</div>
+<div id="registries">
+<section id="section-9">
+      <h2 id="name-use-of-iana-registries">
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-use-of-iana-registries" class="section-name selfRef">Use of IANA Registries</a>
+    </h2>
+</section>
+</div>
+<div id="authorize">
+<section id="section-10">
+      <h2 id="name-architecture-for-authorizin">
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-architecture-for-authorizin" class="section-name selfRef">Architecture for Authorizing Entities</a>
+      </h2>
+<p id="section-10-1">TODO: Create SVG image/diagram to explain and go along w/text
+RF
+~~~ goat
+    {::include diagrams/Authorizers_Pt2-auth.svg}
+    ~~~
+    {: #dia-1 title="Basic Structure: Authorizations by an External Entity"}
+# Security Considerations {#security}<a href="#section-10-1" class="pilcrow">¶</a></p>
+<p id="section-10-2">TODO Security<a href="#section-10-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana">
-<section id="section-4">
+<section id="section-11">
       <h2 id="name-iana-considerations">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-4-1">This document has no IANA actions.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-11-1">This document has no IANA actions.<a href="#section-11-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-normative-references">
-<section id="section-5">
+<section id="section-12">
       <h2 id="name-normative-references">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
       </h2>
 <dl class="references">
 <dt id="RFC2119">[RFC2119]</dt>
