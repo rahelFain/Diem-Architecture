@@ -52,9 +52,9 @@ TODO Abstract
 This document presents a DNS and DNSSec forward architecture.
 That is, it assumes DNSSec is required and defines an architecture in which different components or building blocks can be combined to achieve the needs of a particular use case, but where all of them are primarily realized using DNS and employ DNSSEC signing and validation.
 For each building block or set of blocks introduced we reference the set of requirements it meets and identify other blocks with which it would likely be used or implemented.
-This is intended to enable the construction of Digital Emblems that accommodate various granularity and temporality requirements. 
-Note: Digital Emblem protocols that do not use/require DNSSEC signing and validation thereof should specify how they handle emblem validation (to the extent required for their intended use cases). 
-Among the variations discussed in this document are cases where: 
+This is intended to enable the construction of Digital Emblems that accommodate various granularity and temporality requirements.
+Note: Digital Emblem protocols that do not use/require DNSSEC signing and validation thereof should specify how they handle emblem validation (to the extent required for their intended use cases).
+Among the variations discussed in this document are cases where:
 * All of the DE's key information provided within DNS {};
 * DE uses DNS pointers to resources outside of DNS that contain the emblem's key information {};
 * DE primarily consists of a single RR {};
@@ -68,8 +68,8 @@ Among the variations discussed in this document are cases where:
 # Assumptions {#assume}
 
 This document presents a DNS and DNSSEC forward architecture.
-That is, it assumes DNSSec is required and defines an architecture in which different components are primarily realized using DNS and DNSSEC.  
-* Cryptographic validation of Digital Emblems is required and is performed using DNSSec. 
+That is, it assumes DNSSec is required and defines an architecture in which different components are primarily realized using DNS and DNSSEC.
+* Cryptographic validation of Digital Emblems is required and is performed using DNSSec.
 * Given the use of DNSSEC, all cases must meet the assured response requirement and a baseline version of consistent content.
 We discuss this in more detail and present a mechanism for supporting selective disclosure in section {}(TODO)
 
@@ -78,9 +78,9 @@ Decisions have to be made when designing the protocol and applying it for a give
 Generally speaking we recommend using (x) but offer considerations for others
 * Single RR w/everything vs multi RR/RRSet with each RR containing one or more pieces of core information
 * Type(s) of RR(s) used within the Digital Emblem
- * TXT vs no TXT 
+ * TXT vs no TXT
 
-# Zone Cut Structure for Digital Emblems {#zone_cuts}
+# Zone Cut Structure for Digital Emblems {#zoneCuts}
 TODO: Considerations for selective disclosure go here
 
 
@@ -96,16 +96,19 @@ Alex?
 
 # Discovery {#discovery}
 
-## DNS Contained Emblem Discovery {#dns_discovery}
+## DNS Contained Emblem Discovery {#dnsDiscovery}
 
-## External DE Discovery {#ext_discovery}
+## External DE Discovery {#extDiscovery}
 
 # Use of IANA Registries {#registries}
 
 # Architecture for Authorizing Entities {#authorize}
-TODO: Create SVG image/diagram to explain and go along w/text                 
+TODO: Create SVG image/diagram to explain and go along w/text
 RF
-
+~~~ goat
+    {::include diagrams/Authorizers_Pt2-auth.svg}
+    ~~~
+    {: #dia-1 title="Basic Structure: Authorizations by an External Entity"}
 # Security Considerations {#security}
 
 TODO Security
