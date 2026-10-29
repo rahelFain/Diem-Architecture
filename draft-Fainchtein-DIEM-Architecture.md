@@ -7,35 +7,47 @@ submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
 consensus: true
-v: 3
-# area: ART
-# workgroup: DIEM Digital Emblems
+v: 0 
+# area: "Applications and Real-Time"
+# workgroup: "Digital Emblems"
 keyword:
  - Architecture
  - DNS
  - DNSSec
  - DANE
 venue:
-#  group: WG
-#  type: Working Group
-#  mail: WG@example.com
-#  arch: https://example.com/WG
+#  group:"Digital Emblems"
+#  type: "Working Group"
+#  mail: "diem@ietf.org"
+#  arch: "https://mailarchive.ietf.org/arch/browse/diem"
   github: "rahelFain/Diem-Architecture"
   latest: "https://rahelFain.github.io/Diem-Architecture/draft-Fainchtein-DIEM-Architecture.html"
 
 author:
  -
     fullname: Rahel A. Fainchtein
-    organization: JHUAPL
+    organization: JHU/APL
     email: rahel.fainchtein@jhuapl.edu
 
     fullname: Allison Mankin
     organization: Packet Clearing House
-    email:
+    email: allison@pch.net
 
 normative:
+    CHARTER:
+      target: https://datatracker.ietf.org/doc/charter-ietf-diem/01/
+      title: Digital Emblems
+      date: 2025-05-27
+    USE_CASES:
+      target: https://datatracker.ietf.org/doc/draft-ietf-diem-requirements/
+      title: Digital Emblems - Use Cases and Requirements
+      date: 2026-07-06
 
 informative:
+  DANCE-CLIENT-AUTH:
+    target: https://datatracker.ietf.org/doc/draft-ietf-dance-client-auth/
+    title: TLS Client Authentication via DANE TLSA records
+    date: 2026-10-28
 
 ...
 
@@ -82,7 +94,20 @@ Generally speaking we recommend using (x) but offer considerations for others
 
 # Zone Cut Structure for Digital Emblems {#zoneCuts}
 TODO: Considerations for selective disclosure go here
-
+* Since we assume the use of DNSSEC, or rather that all RRs/RRsets making up a digital emblem are DNSSEC signed, the
+authoritative server cannot deny the existence of any associated RRs/RRsets. As such, the only way to selectively
+disclose information within a digital emblem is for the authoritative server to hold two versions of any RRs that
+contain sensitive information or pointers thereto.
+* Two versions of RRs containing sensitive information or information that is to be selectively disclosed:
+    * One that contains the sensitive information or pointers thereto (hidden RR). The hidden RR should only be presented
+    if mutual authentication succeeds, and the requestor identity's membership in the set of authorized identities can
+    be verified. Moreover, given the sensitivity of its contents, the hidden RR should be encrypted.
+    * One of the same type and for the same FQDN that only includes the basic and/or non-sensitive emblem information
+    (default RR). This version of the RR should be returned by the
+    Authoratative server if mutual authentication is not used, or if the requester's identity and/or authorization to
+    see the sensitive content cannot be verified.
+* It is recommended that only RRtype(s) where the default RR does not indicate that sensitive details have been
+redacted or intentionally excluded from its contents be chosen.
 
 TODO: Include building block content such as code examples or diagrams/illustrations (ABNF) to provide representation of concepts described.
 # Digital Emblem Naming Structure {#naming}
@@ -92,7 +117,7 @@ TODO: Include building block content such as code examples or diagrams/illustrat
 AM
 
 # Emblems that are not Fully Contained in DNS {#pointers}
-Alex?
+* TODO
 
 # Discovery {#discovery}
 
@@ -103,8 +128,6 @@ Alex?
 # Use of IANA Registries {#registries}
 
 # Architecture for Authorizing Entities {#authorize}
-TODO: Create SVG image/diagram to explain and go along w/text
-RF
 ~~~ goat
     {::include diagrams/Authorizers_Pt2-auth.svg}
     ~~~
