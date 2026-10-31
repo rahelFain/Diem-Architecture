@@ -49,6 +49,7 @@ normative:
   RFC4034:
   RFC4035:
   RFC6840:
+  RFC8552:
 
 informative:
   DANCE-CLIENT-AUTH:
@@ -88,23 +89,23 @@ Among the variations discussed in this document are cases where
 This document presents a DNS and DNSSEC forward architecture.
 That is, it assumes DNSSEC is required and defines an architecture in which different components are primarily realized using DNS and DNSSEC.
 * Cryptographic validation of Digital Emblems is required and is performed using DNSSEC.
-* Given the use of DNSSEC, all cases must meet the assured response requirement and a baseline version of consistent content.
+* Given the use of DNSSEC, all cases must meet the assured response requirement and a baseline version of consistent contentoutlined in {{USE_CASES}} Section 3.2.2.
 We discuss this in more detail and present a mechanism for supporting selective disclosure in {{zoneCuts}}.
 
 # DNS Structures of Digital Emblems {#structures}
-Decisions have to be made when designing the protocol and applying it for a given use case
-Generally speaking we recommend using (x) but offer considerations for others
+Decisions have to be made when designing the protocol and applying it for a given use case.
+Generally speaking we recommend using a configuration that simplifies discovery and record maintenance but offer considerations for other approaches.
 
 * Single RR w/everything vs multi RR/RRSet with each RR containing one or more pieces of core information
 * Type(s) of RR(s) used within the Digital Emblem
-* TXT vs no TXT
+  * TXT vs no TXT
 
 # Zone Cut Structure for Digital Emblems {#zoneCuts}
 
 Since we assume the use of DNSSEC, or rather that all RRs/RRsets making up a digital emblem are DNSSEC signed, the
 authoritative server cannot deny the existence of any associated RRs/RRsets. As such, the only way to selectively
 disclose information within a digital emblem is for the authoritative server to hold two versions of any RRs that
-contain sensitive information or pointers thereto. Specifically
+contain sensitive information or pointers thereto. Specifically:
 
 * One that contains the sensitive information or pointers thereto (hidden RR). The hidden RR should only be presented
 if mutual authentication succeeds, and the requestor identity's membership in the set of authorized identities can
@@ -118,7 +119,14 @@ It is recommended that only RRtype(s) where the default RR does not indicate tha
 redacted or intentionally excluded from its contents be chosen.
 
 # Digital Emblem Naming Structure {#naming}
-TODO
+To ensure Digital Emblems and all of their associated records can be realized, underscored naming of attribute leaves
+{{RFC8552}} should be used. Specifically, we propose the use of following underscored attribute names:
+
+* `_diem` to denote a Digital Emblem.
+* `_authorizers` as a subdomain of `_diem` (i.e. `_authorizers._diem`) to denote the set of authorizers for a Digital Emblem.
+* etc
+As noted in {{registries}}, the standardization of these attributes and of their associated RRtypes will require
+registration in the appropriate IANA registry.
 
 # Authentication and DNSSEC Architecture of DE's {#authentication}
 TODO
@@ -134,6 +142,10 @@ TODO
 ## External DE Discovery {#extDiscovery}
 
 # Use of IANA Registries {#registries}
+If the use of underscored attribute leaves proposed in {{naming}} is to be adopted, all underscored names and their
+associated RRtypes will need to be added to the appropriate registry.
+(TODO: Update if consensus to use underscored naming is reached, remove otherwise.)
+
 
 # Architecture for Authorizing Entities {#authorize}
 
@@ -160,6 +172,26 @@ To finalize the authorization, the authorizer sends the signed constraints hash 
 who then uses this to update the set of authorizers within the Digital Emblem.
 Note:To ease transitions from one set of constraints to another, or to handle reissuance of the authorization upon its
 expiration, Authorizers may host multiple authorization RRs/RRsets for the same emblem.
+
+## Validation Procedure of ExtraZonal Authorization {#authorizer-val}
+To validate an emblem that is authorized by an external Authorizer, the validator must ensure that all of the following conditions hold:
+
+1. DNSSEC validation of all RRs/RRsets within the Digital Emblem succeeds.
+2. The emblem is authorized by an authorizer the validator trusts.
+3. An Authorization RR/RRset exists at `<DE_Name>.authorized.<TRUSTED_AUTH_FQDN>`, where `<TRUSTED_AUTH_FQDN>` is the
+FQDN of the trusted Authorizer.
+4. At least one authorization RR/RRset at `<DE_Name>.authorized.<TRUSTED_AUTH_FQDN>` can be validated. That is:
+    * DNSSEC validation of the RR/RRset succeeds;
+    * The version number noted in the Digital Emblem's authorizer record matches the constraint set version number;
+    * The validity period of the authorization record has begun but not ended;
+    * The Digital Emblem's use and/or claims comply with all of the constraints noted in the constraint set;And
+    * The Hash of the constraint set and signature over it match those provided in the Digital Emblem's authorizer record.
+
+If any of the conditions are not met, validation of the Digital Emblem has failed and the validator MUST reject it.
+
+## Revoking Authorization
+Based on the procedures described in {{authorize}} and {{authorizer-val}}, an Authorizer can revoke their authorization
+of a Digital Emblem by removing the authorization RR(s)/RRset(s) located at `<DE_Name>.authorized.<AUTH_FQDN>`.
 
 # Security Considerations {#security}
 
