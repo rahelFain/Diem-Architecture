@@ -1185,6 +1185,14 @@ svg {
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
             <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-architecture-for-authorizin" class="internal xref">Architecture for Authorizing Entities</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.1">
+                <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-validation-procedure-of-ext" class="internal xref">Validation Procedure of ExtraZonal Authorization</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
+                <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="auto internal xref">11.2</a>.  <a href="#name-revoking-authorization" class="internal xref">Revoking Authorization</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
             <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
@@ -1260,7 +1268,7 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <p id="section-3-1">This document presents a DNS and DNSSEC forward architecture.
 That is, it assumes DNSSEC is required and defines an architecture in which different components are primarily realized using DNS and DNSSEC.
 * Cryptographic validation of Digital Emblems is required and is performed using DNSSEC.
-* Given the use of DNSSEC, all cases must meet the assured response requirement and a baseline version of consistent content.
+* Given the use of DNSSEC, all cases must meet the assured response requirement and a baseline version of consistent contentoutlined in <span>[<a href="#USE_CASES" class="cite xref">USE_CASES</a>]</span> Section 3.2.2.
 We discuss this in more detail and present a mechanism for supporting selective disclosure in <a href="#zoneCuts" class="auto internal xref">Section 5</a>.<a href="#section-3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1269,17 +1277,19 @@ We discuss this in more detail and present a mechanism for supporting selective 
       <h2 id="name-dns-structures-of-digital-e">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-dns-structures-of-digital-e" class="section-name selfRef">DNS Structures of Digital Emblems</a>
       </h2>
-<p id="section-4-1">Decisions have to be made when designing the protocol and applying it for a given use case
-Generally speaking we recommend using (x) but offer considerations for others<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-1">Decisions have to be made when designing the protocol and applying it for a given use case.
+Generally speaking we recommend using a configuration that simplifies discovery and record maintenance but offer considerations for other approaches.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-4-2.1">
           <p id="section-4-2.1.1">Single RR w/everything vs multi RR/RRSet with each RR containing one or more pieces of core information<a href="#section-4-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-4-2.2">
           <p id="section-4-2.2.1">Type(s) of RR(s) used within the Digital Emblem<a href="#section-4-2.2.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4-2.2.2.1">
+              <p id="section-4-2.2.2.1.1">TXT vs no TXT<a href="#section-4-2.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-4-2.3">
-          <p id="section-4-2.3.1">TXT vs no TXT<a href="#section-4-2.3.1" class="pilcrow">¶</a></p>
+          </ul>
 </li>
       </ul>
 </section>
@@ -1292,7 +1302,7 @@ Generally speaking we recommend using (x) but offer considerations for others<a 
 <p id="section-5-1">Since we assume the use of DNSSEC, or rather that all RRs/RRsets making up a digital emblem are DNSSEC signed, the
 authoritative server cannot deny the existence of any associated RRs/RRsets. As such, the only way to selectively
 disclose information within a digital emblem is for the authoritative server to hold two versions of any RRs that
-contain sensitive information or pointers thereto. Specifically<a href="#section-5-1" class="pilcrow">¶</a></p>
+contain sensitive information or pointers thereto. Specifically:<a href="#section-5-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-5-2.1">
           <p id="section-5-2.1.1">One that contains the sensitive information or pointers thereto (hidden RR). The hidden RR should only be presented
@@ -1315,7 +1325,21 @@ redacted or intentionally excluded from its contents be chosen.<a href="#section
       <h2 id="name-digital-emblem-naming-struc">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-digital-emblem-naming-struc" class="section-name selfRef">Digital Emblem Naming Structure</a>
       </h2>
-<p id="section-6-1">TODO<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-1">To ensure Digital Emblems and all of their associated records can be realized, underscored naming of attribute leaves
+<span>[<a href="#RFC8552" class="cite xref">RFC8552</a>]</span> should be used. Specifically, we propose the use of following underscored attribute names:<a href="#section-6-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-6-2.1">
+          <p id="section-6-2.1.1"><code>_diem</code> to denote a Digital Emblem.<a href="#section-6-2.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-6-2.2">
+          <p id="section-6-2.2.1"><code>_authorizers</code> as a subdomain of <code>_diem</code> (i.e. <code>_authorizers._diem</code>) to denote the set of authorizers for a Digital Emblem.<a href="#section-6-2.2.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-6-2.3">
+          <p id="section-6-2.3.1">etc
+As noted in <a href="#registries" class="auto internal xref">Section 10</a>, the standardization of these attributes and of their associated RRtypes will require
+registration in the appropriate IANA registry.<a href="#section-6-2.3.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
 </section>
 </div>
 <div id="authentication">
@@ -1359,7 +1383,10 @@ redacted or intentionally excluded from its contents be chosen.<a href="#section
 <section id="section-10">
       <h2 id="name-use-of-iana-registries">
 <a href="#section-10" class="section-number selfRef">10. </a><a href="#name-use-of-iana-registries" class="section-name selfRef">Use of IANA Registries</a>
-    </h2>
+      </h2>
+<p id="section-10-1">If the use of underscored attribute leaves proposed in <a href="#naming" class="auto internal xref">Section 6</a> is to be adopted, all underscored names and their
+associated RRtypes will need to be added to the appropriate registry.
+(TODO: Update if consensus to use underscored naming is reached, remove otherwise.)<a href="#section-10-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authorize">
@@ -1399,6 +1426,56 @@ To finalize the authorization, the authorizer sends the signed constraints hash 
 who then uses this to update the set of authorizers within the Digital Emblem.
 Note:To ease transitions from one set of constraints to another, or to handle reissuance of the authorization upon its
 expiration, Authorizers may host multiple authorization RRs/RRsets for the same emblem.<a href="#section-11-4" class="pilcrow">¶</a></p>
+<div id="authorizer-val">
+<section id="section-11.1">
+        <h3 id="name-validation-procedure-of-ext">
+<a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-validation-procedure-of-ext" class="section-name selfRef">Validation Procedure of ExtraZonal Authorization</a>
+        </h3>
+<p id="section-11.1-1">To validate an emblem that is authorized by an external Authorizer, the validator must ensure that all of the following conditions hold:<a href="#section-11.1-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-11.1-2">
+<li id="section-11.1-2.1">
+            <p id="section-11.1-2.1.1">DNSSEC validation of all RRs/RRsets within the Digital Emblem succeeds.<a href="#section-11.1-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-11.1-2.2">
+            <p id="section-11.1-2.2.1">The emblem is authorized by an authorizer the validator trusts.<a href="#section-11.1-2.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-11.1-2.3">
+            <p id="section-11.1-2.3.1">An Authorization RR/RRset exists at <code>&lt;DE_Name&gt;.authorized.&lt;TRUSTED_AUTH_FQDN&gt;</code>, where <code>&lt;TRUSTED_AUTH_FQDN&gt;</code> is the
+FQDN of the trusted Authorizer.<a href="#section-11.1-2.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li id="section-11.1-2.4">
+            <p id="section-11.1-2.4.1">At least one authorization RR/RRset at <code>&lt;DE_Name&gt;.authorized.&lt;TRUSTED_AUTH_FQDN&gt;</code> can be validated. That is:<a href="#section-11.1-2.4.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-11.1-2.4.2.1">
+                <p id="section-11.1-2.4.2.1.1">DNSSEC validation of the RR/RRset succeeds;<a href="#section-11.1-2.4.2.1.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-11.1-2.4.2.2">
+                <p id="section-11.1-2.4.2.2.1">The version number noted in the Digital Emblem's authorizer record matches the constraint set version number;<a href="#section-11.1-2.4.2.2.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-11.1-2.4.2.3">
+                <p id="section-11.1-2.4.2.3.1">The validity period of the authorization record has begun but not ended;<a href="#section-11.1-2.4.2.3.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-11.1-2.4.2.4">
+                <p id="section-11.1-2.4.2.4.1">The Digital Emblem's use and/or claims comply with all of the constraints noted in the constraint set;And<a href="#section-11.1-2.4.2.4.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-11.1-2.4.2.5">
+                <p id="section-11.1-2.4.2.5.1">The Hash of the constraint set and signature over it match those provided in the Digital Emblem's authorizer record.<a href="#section-11.1-2.4.2.5.1" class="pilcrow">¶</a></p>
+</li>
+            </ul>
+</li>
+        </ol>
+<p id="section-11.1-3">If any of the conditions are not met, validation of the Digital Emblem has failed and the validator <span class="bcp14">MUST</span> reject it.<a href="#section-11.1-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="revoking-authorization">
+<section id="section-11.2">
+        <h3 id="name-revoking-authorization">
+<a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-revoking-authorization" class="section-name selfRef">Revoking Authorization</a>
+        </h3>
+<p id="section-11.2-1">Based on the procedures described in <a href="#authorize" class="auto internal xref">Section 11</a> and <a href="#authorizer-val" class="auto internal xref">Section 11.1</a>, an Authorizer can revoke their authorization
+of a Digital Emblem by removing the authorization RR(s)/RRset(s) located at <code>&lt;DE_Name&gt;.authorized.&lt;AUTH_FQDN&gt;</code>.<a href="#section-11.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="security">
@@ -1455,6 +1532,10 @@ expiration, Authorizers may host multiple authorization RRs/RRsets for the same 
 <dt id="RFC8174">[RFC8174]</dt>
         <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8552">[RFC8552]</dt>
+        <dd>
+<span class="refAuthor">Crocker, D.</span>, <span class="refTitle">"Scoped Interpretation of DNS Resource Records through "Underscored" Naming of Attribute Leaves"</span>, <span class="seriesInfo">BCP 222</span>, <span class="seriesInfo">RFC 8552</span>, <span class="seriesInfo">DOI 10.17487/RFC8552</span>, <time datetime="2019-03" class="refDate">March 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8552">https://www.rfc-editor.org/rfc/rfc8552</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9364">[RFC9364]</dt>
         <dd>
